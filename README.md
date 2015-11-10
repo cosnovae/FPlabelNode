@@ -1,7 +1,7 @@
 
 # FPLabelNode
 
-A simple subclass of ```SKLabelNode```, which supports multiple lines and automatic line breaking.
+A simple subclass of ```SKNode```, which supports multiple lines and automatic line breaking.
 
 * Language: Swift 2.1
 * Requirements: SpriteKit
@@ -55,5 +55,5 @@ label.pushTexts(["Line 1","Line 2", "Line 3"])
 
 ## Installing
 
-just copy the FPLabelNode.swift to your project.
+just copy the ```FPLabelNode.swift``` to your project.
  
