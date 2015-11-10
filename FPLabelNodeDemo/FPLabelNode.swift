@@ -40,6 +40,7 @@ class FPLabelNode : SKNode {
     var fontColor : SKColor     // Font color
     var fontSize : CGFloat      // Font size
     var spacing : CGFloat       // Line space
+    var buffer : CGFloat        // buffer
     var starty : CGFloat = 0    // Start point in y
     var startx : CGFloat = 0    // Start point in x
     var splitMode : FPLabelSplitMode
@@ -48,11 +49,11 @@ class FPLabelNode : SKNode {
         didSet {
             switch horizontalAlignmentMode{
             case .Left:
-                self.startx = 0.0
+                self.startx = self.buffer
             case .Center:
                 self.startx = self.width / 2.0
             case .Right:
-                self.startx = self.width
+                self.startx = self.width - self.buffer
             }
         }
     }
@@ -62,9 +63,10 @@ class FPLabelNode : SKNode {
         self.fontName = fontNamed
         self.fontColor = SKColor.whiteColor()
         self.fontSize = 30
-        self.spacing = 20
+        self.spacing = 1.3
         self.width = 9999
         self.height = 9999
+        self.buffer = 80
         self.splitMode = .Word
         self.verticalAlignmentMode = .Center
         self.horizontalAlignmentMode = .Center
@@ -114,7 +116,7 @@ class FPLabelNode : SKNode {
                 for c in text.characters {
                     txt += String(c)
                     let w = txt.widthWithConstrainedHeight(self.fontSize, font: UIFont(name: self.fontName, size: self.fontSize)!)
-                    if w >= (self.width - self.fontSize * 2) {
+                    if w >= (self.width - self.buffer) {
                         txts.append(txt)
                         txt = ""
                     }
@@ -132,7 +134,7 @@ class FPLabelNode : SKNode {
                     txt += word + " "
                     let dw = word.widthWithConstrainedHeight(self.fontSize, font: UIFont(name: self.fontName, size: self.fontSize)!)
                     let w = txt.widthWithConstrainedHeight(self.fontSize, font: UIFont(name: self.fontName, size: self.fontSize)!)
-                    if w > (self.width - (dw)) {
+                    if w > (self.width - dw - self.buffer) {
                         txts.append(txt)
                         txt = ""
                     }
@@ -163,7 +165,7 @@ class FPLabelNode : SKNode {
         starty -= (self.spacing * self.fontSize)
         self.addChild(label)
         
-        if (-starty > (self.height - fontSize - 10)) {
+        if (-starty > (self.height - self.buffer)) {
             self.clear()
         }
     }

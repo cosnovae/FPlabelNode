@@ -27,14 +27,25 @@ Just like the original ```SKLabelNode```
 let label = FPLabelNode(fontNamed:"Helvetica")
 ```
 
-setup 
+Simple setup
+
+```swift
+label.width = CGRectGetMaxX(self.frame)
+label.height = CGRectGetMaxY(self.frame)
+label.position = CGPoint(x:CGRectGetMidX(self.frame), y: CGRectGetMidY(self.frame)
+self.addChild(label)
+
+```
+
+Full setup 
 
 ```swift
 label.width = CGRectGetMaxX(self.frame)
 label.height = CGRectGetMaxY(self.frame)
 label.fontColor = SKColor.blackColor()
 label.fontSize = 40
-label.spacing = 1.5
+label.spacing  = 1.5
+label.buffer   = 80                        // buffer for the edge
 label.verticalAlignmentMode = .Center      // default = .Center
 label.horizontalAlignmentMode = .Center    // default = .Center
 label.splitMode = .Word                    // defulat = .Word

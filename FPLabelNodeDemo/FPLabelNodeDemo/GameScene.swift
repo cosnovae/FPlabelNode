@@ -15,15 +15,17 @@ class GameScene: SKScene {
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
+        backgroundColor = SKColor.blackColor()
         
-        label.width = CGRectGetMaxX(self.frame) - 60
-        label.height = CGRectGetMaxY(self.frame) - 50
-        label.fontColor = SKColor.blackColor()
-        label.fontSize = 30
-        label.spacing = 1.5
+        label.width = CGRectGetMaxX(self.frame)
+        label.height = CGRectGetMaxY(self.frame)
+        label.fontColor = SKColor.whiteColor()
+        //label.fontSize = 30
+        //label.spacing = 1.5
+        //label.buffer = 80
         label.verticalAlignmentMode = .Center
         label.horizontalAlignmentMode = .Center
-        label.position = CGPoint(x: 30, y: CGRectGetMaxY(self.frame) - 200)
+        label.position = CGPoint(x: 0, y: CGRectGetMaxY(self.frame) - 200)
         self.addChild(label)
         
         // Pushing many texts
