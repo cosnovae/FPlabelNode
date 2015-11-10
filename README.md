@@ -71,6 +71,12 @@ If you want to split your string by ```"\n"```,
 label.pushString("This string\n can be \nsplit to \nfour lines.")
 ```
 
+Clear the text,
+
+```swift
+label.clean()
+```
+
 ## Installing
 
 just copy the ```FPLabelNode.swift``` to your project.
