@@ -53,16 +53,22 @@ label.position = CGPoint(x: 20, y: CGRectGetMaxY(self.frame) - 50)
 self.addChild(label)
 ```
 
-push text
+Push text
 
 ```swift
 label.pushText("A string")
 ```
 
-push an array of string
+Push an array of string
 
 ```swift
 label.pushTexts(["Line 1","Line 2", "Line 3"])
+```
+
+If you want to split your string by ```"\n"```,
+
+```swift
+label.pushString("This string\n can be \nsplit to \nfour lines.")
 ```
 
 ## Installing

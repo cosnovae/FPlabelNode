@@ -88,6 +88,16 @@ class FPLabelNode : SKNode {
         self.starty = 0
     }
     
+    // Similar to the .text in SKLabelNode.
+    
+    func pushString(text:String){
+        let texts = text.characters.split{$0 == "\n"}.map(String.init)
+        for txt in texts {
+            self.pushText(txt)
+        }
+    }
+    
+    
     // pushing more texts
     
     func pushTexts(texts:[String]) {

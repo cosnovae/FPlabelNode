@@ -33,6 +33,10 @@ class GameScene: SKScene {
             "If you want to break your String to multi-lines, just split it to an array of String.", "",
             "You can also push a very long string. FPLabelNode will automatically break the string for you, depending on the width of your FPLabelNode."
             ])
+        
+        // Push a long string with "\n" 
+        label.pushString("This \nstring\nislike\nthe\nold\nway.")
+        
         label.pushText("Tap the screen to add more text...")
     }
     
