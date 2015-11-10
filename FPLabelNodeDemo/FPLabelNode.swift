@@ -37,7 +37,21 @@ class FPLabelNode : SKNode {
     var fontSize : CGFloat      // Font size
     var spacing : CGFloat       // Line space
     var starty : CGFloat = 0    // Start point in y
-    let startx : CGFloat = 0    // Start point in x
+    var startx : CGFloat = 0    // Start point in x
+    var verticalAlignmentMode : SKLabelVerticalAlignmentMode
+    var horizontalAlignmentMode : SKLabelHorizontalAlignmentMode {
+        didSet {
+            switch horizontalAlignmentMode{
+            case .Left:
+                self.startx = 0.0
+            case .Center:
+                self.startx = self.width / 2.0
+            case .Right:
+                self.startx = self.width
+            }
+        }
+    }
+
     
     init(fontNamed: String) {
         self.fontName = fontNamed
@@ -46,6 +60,8 @@ class FPLabelNode : SKNode {
         self.spacing = 20
         self.width = 9999
         self.height = 9999
+        self.verticalAlignmentMode = .Center
+        self.horizontalAlignmentMode = .Center
         super.init()
     }
     required init?(coder aDecoder: NSCoder) {
@@ -91,7 +107,7 @@ class FPLabelNode : SKNode {
             for c in text.characters {
                 txt += String(c)
                 let w = txt.widthWithConstrainedHeight(self.fontSize, font: UIFont(name: self.fontName, size: self.fontSize)!)
-                if w >= (self.width - 50) {
+                if w >= (self.width - self.fontSize * 2) {
                     txts.append(txt)
                     txt = ""
                 }
@@ -113,8 +129,8 @@ class FPLabelNode : SKNode {
         
         let label = SKLabelNode(fontNamed: self.fontName)
         label.position = CGPoint(x:startx, y:starty)
-        label.horizontalAlignmentMode = .Left
-        label.verticalAlignmentMode = .Center
+        label.horizontalAlignmentMode = self.horizontalAlignmentMode
+        label.verticalAlignmentMode = self.verticalAlignmentMode
         label.text = text
         label.fontSize = self.fontSize
         label.fontColor = self.fontColor

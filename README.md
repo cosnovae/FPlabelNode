@@ -35,6 +35,8 @@ label.height = CGRectGetMaxY(self.frame)
 label.fontColor = SKColor.blackColor()
 label.fontSize = 40
 label.spacing = 1.5
+label.verticalAlignmentMode = .Center
+label.horizontalAlignmentMode = .Center
 label.position = CGPoint(x: 20, y: CGRectGetMaxY(self.frame) - 50)
 self.addChild(label)
 ```
