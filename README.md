@@ -21,15 +21,15 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 ## Usage
 
-Just like the original SKLabelNode
+Just like the original ```SKLabelNode```
 
-```
+```swift
 let label = FPLabelNode(fontNamed:"Helvetica")
 ```
 
 setup 
 
-```
+```swift
 label.width = CGRectGetMaxX(self.frame)
 label.height = CGRectGetMaxY(self.frame)
 label.fontColor = SKColor.blackColor()
@@ -41,13 +41,13 @@ self.addChild(label)
 
 push text
 
-```
+```swift
 label.pushText("A string")
 ```
 
 push an array of string
 
-```
+```swift
 label.pushTexts(["Line 1","Line 2", "Line 3"])
 ```
 
