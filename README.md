@@ -15,7 +15,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 ## Functions
 
 * Display multiple lines
-* Autmatic line breaking (by words or by characters)
+* Autmatic line breaking (by words, by characters, or by ```"\n"```)
 * Dynamically add more text
 * Autoclear text when filled
 
