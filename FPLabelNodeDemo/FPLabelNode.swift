@@ -27,8 +27,12 @@ extension String {
     }
 }
 
+enum FPLabelSplitMode {
+    case Character, Word
+}
 
 class FPLabelNode : SKNode {
+    
     
     var width : CGFloat         // The width of your FPLabelNode
     var height : CGFloat        // The height of your FLabelNode
@@ -38,6 +42,7 @@ class FPLabelNode : SKNode {
     var spacing : CGFloat       // Line space
     var starty : CGFloat = 0    // Start point in y
     var startx : CGFloat = 0    // Start point in x
+    var splitMode : FPLabelSplitMode
     var verticalAlignmentMode : SKLabelVerticalAlignmentMode
     var horizontalAlignmentMode : SKLabelHorizontalAlignmentMode {
         didSet {
@@ -60,6 +65,7 @@ class FPLabelNode : SKNode {
         self.spacing = 20
         self.width = 9999
         self.height = 9999
+        self.splitMode = .Word
         self.verticalAlignmentMode = .Center
         self.horizontalAlignmentMode = .Center
         super.init()
@@ -100,25 +106,45 @@ class FPLabelNode : SKNode {
         if textWidth >= self.width {
             
             // split the text and then push it.
-            
-            var txts = [String]()
-            var txt: String = ""
-            
-            for c in text.characters {
-                txt += String(c)
-                let w = txt.widthWithConstrainedHeight(self.fontSize, font: UIFont(name: self.fontName, size: self.fontSize)!)
-                if w >= (self.width - self.fontSize * 2) {
-                    txts.append(txt)
-                    txt = ""
+            switch self.splitMode{
+            case .Character:
+                var txts = [String]()
+                var txt: String = ""
+                
+                for c in text.characters {
+                    txt += String(c)
+                    let w = txt.widthWithConstrainedHeight(self.fontSize, font: UIFont(name: self.fontName, size: self.fontSize)!)
+                    if w >= (self.width - self.fontSize * 2) {
+                        txts.append(txt)
+                        txt = ""
+                    }
+                }
+                // append the remaining text
+                txts.append(txt)
+                for txt in txts {
+                    self.pushALine(txt)
+                }
+            case .Word:
+                var txts = [String]()
+                var txt : String = ""
+                let words = text.characters.split{$0 == " "}.map(String.init)
+                for word in words {
+                    txt += word + " "
+                    let dw = word.widthWithConstrainedHeight(self.fontSize, font: UIFont(name: self.fontName, size: self.fontSize)!)
+                    let w = txt.widthWithConstrainedHeight(self.fontSize, font: UIFont(name: self.fontName, size: self.fontSize)!)
+                    if w > (self.width - (dw)) {
+                        txts.append(txt)
+                        txt = ""
+                    }
+                }
+                // append the remaining text
+                txts.append(txt)
+                for txt in txts {
+                    self.pushALine(txt)
                 }
             }
-            txts.append(txt)
-            for txt in txts {
-                self.pushALine(txt)
-            }
-            
         } else {
-            // push the text
+            
             self.pushALine(text)
         }
         

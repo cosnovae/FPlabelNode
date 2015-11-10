@@ -15,7 +15,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 ## Functions
 
 * Display multiple lines
-* Autmatic line breaking
+* Autmatic line breaking (by words or by characters)
 * Dynamically add more text
 * Autoclear text when filled
 
@@ -35,8 +35,9 @@ label.height = CGRectGetMaxY(self.frame)
 label.fontColor = SKColor.blackColor()
 label.fontSize = 40
 label.spacing = 1.5
-label.verticalAlignmentMode = .Center
-label.horizontalAlignmentMode = .Center
+label.verticalAlignmentMode = .Center      // default = .Center
+label.horizontalAlignmentMode = .Center    // default = .Center
+label.splitMode = .Word                    // defulat = .Word
 label.position = CGPoint(x: 20, y: CGRectGetMaxY(self.frame) - 50)
 self.addChild(label)
 ```
