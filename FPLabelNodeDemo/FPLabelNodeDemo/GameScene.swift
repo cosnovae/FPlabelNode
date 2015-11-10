@@ -18,7 +18,7 @@ class GameScene: SKScene {
         backgroundColor = SKColor.blackColor()
         
         label.width = CGRectGetMaxX(self.frame)
-        label.height = CGRectGetMaxY(self.frame)
+        label.height = CGRectGetMaxY(self.frame) - 200
         label.fontColor = SKColor.whiteColor()
         //label.fontSize = 30
         //label.spacing = 1.5

@@ -40,7 +40,12 @@ class FPLabelNode : SKNode {
     var fontColor : SKColor     // Font color
     var fontSize : CGFloat      // Font size
     var spacing : CGFloat       // Line space
-    var buffer : CGFloat        // buffer
+    var buffer : CGFloat {
+        didSet {
+            self.startx = buffer
+            self.starty = -buffer
+        }
+    }
     var starty : CGFloat = 0    // Start point in y
     var startx : CGFloat = 0    // Start point in x
     var splitMode : FPLabelSplitMode
@@ -85,7 +90,7 @@ class FPLabelNode : SKNode {
                 child.removeFromParent()
             }
         }
-        self.starty = 0
+        self.starty = -self.buffer
     }
     
     // Similar to the .text in SKLabelNode.
