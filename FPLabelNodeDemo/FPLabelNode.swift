@@ -126,7 +126,7 @@ class FPLabelNode : SKNode {
                 for c in text.characters {
                     txt += String(c)
                     let w = txt.widthWithConstrainedHeight(self.fontSize, font: UIFont(name: self.fontName, size: self.fontSize)!)
-                    if w >= (self.width - self.buffer) {
+                    if w >= (self.width - 2 * self.buffer) {
                         txts.append(txt)
                         txt = ""
                     }
@@ -144,7 +144,7 @@ class FPLabelNode : SKNode {
                     txt += word + " "
                     let dw = word.widthWithConstrainedHeight(self.fontSize, font: UIFont(name: self.fontName, size: self.fontSize)!)
                     let w = txt.widthWithConstrainedHeight(self.fontSize, font: UIFont(name: self.fontName, size: self.fontSize)!)
-                    if w > (self.width - dw - self.buffer) {
+                    if w > (self.width - dw - 2 * self.buffer) {
                         txts.append(txt)
                         txt = ""
                     }
