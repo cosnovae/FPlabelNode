@@ -74,7 +74,7 @@ label.pushString("This string\n can be \nsplit to \nfour lines.")
 Clear the text,
 
 ```swift
-label.clean()
+label.clear()
 ```
 
 ## Installing
