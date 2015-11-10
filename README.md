@@ -1,7 +1,7 @@
 
 # FPLabelNode
 
-A simple subclass of ```SKNode```, which supports multiple lines and automatic line breaking.
+A simple subclass of ```SKNode```, which supports multiple line and automatic line breaking.
 
 * Language: Swift 2.1
 * Requirements: SpriteKit
@@ -14,8 +14,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 ## Functions
 
-* Display multiple lines
-* Autmatic line breaking (by words, by characters, or by ```"\n"```)
+* Display multiple line
+* Automatic line breaking (by words, by characters, or by ```"\n"```)
 * Dynamically add more text
 * Autoclear text when filled
 
@@ -76,6 +76,14 @@ Clear the text,
 ```swift
 label.clear()
 ```
+
+Automatic break lines by characters.
+This is useful in some languages that words are not seperated by space (i.e. Chinese, Japanese, ...etc.).
+
+```swift
+label.splitMode = .Character
+```
+
 
 ## Installing
 
